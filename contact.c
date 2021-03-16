@@ -3,31 +3,31 @@ void add_contact(contact* c)
 {
 	if (c->sz == MAX)
 	{
-		printf("Í¨Ñ¶Â¼ÒÑÂú\n");
+		printf("é€šè®¯å½•å·²æ»¡\n");
 	}
 	else
 	{
-		printf("ÇëÊäÈëÃû×Ö:");//Ìí¼Ó
+		printf("è¯·è¾“å…¥åå­—:");//æ·»åŠ 
 		scanf("%s", c->data[c->sz].name);
-		printf("ÇëÊäÈëµç»°:");
+		printf("è¯·è¾“å…¥ç”µè¯:");
 		scanf("%s", c->data[c->sz].tele);
-		printf("ÇëÊäÈëµØÖ·:");
+		printf("è¯·è¾“å…¥åœ°å€:");
 		scanf("%s", c->data[c->sz].addr);
-		printf("ÇëÊäÈëqq:");
+		printf("è¯·è¾“å…¥qq:");
 		scanf("%s", c->data[c->sz].qq);
-		printf("ÇëÊäÈëĞÔ±ğ:");
+		printf("è¯·è¾“å…¥æ€§åˆ«:");
 		scanf("%s", c->data[c->sz].sex);
-		printf("ÇëÊäÈëÄêÁä:");
-		scanf("%d", &(c->data[c->sz].age));//ageÊÇ±äÁ¿£¬ĞèÒªÈ¡µØÖ·
+		printf("è¯·è¾“å…¥å¹´é¾„:");
+		scanf("%d", &(c->data[c->sz].age));//ageæ˜¯å˜é‡ï¼Œéœ€è¦å–åœ°å€
 		c->sz++;
-		printf("Ìí¼Ó³É¹¦\n");
+		printf("æ·»åŠ æˆåŠŸ\n");
 	}
 }
 
 void show_contact(contact* c)
 {
 	int i = 0;
-	printf("%10s %12s %10s %13s %5s %5s\n", "Ãû×Ö", "µç»°", "µØÖ·", "qq", "ÄêÁä", "ĞÔ±ğ");
+	printf("%10s %12s %10s %13s %5s %5s\n", "åå­—", "ç”µè¯", "åœ°å€", "qq", "å¹´é¾„", "æ€§åˆ«");
 	for (i = 0;i < c->sz;i++)
 	{
 		printf("%10s %12s %10s %13s %5d %5s\n", 
@@ -37,7 +37,7 @@ void show_contact(contact* c)
 	}
 }
 static int find_peop_by_name(contact* c,char name[])
-//static ÈÃº¯ÊıÖ»ÄÜÔÚÔ´ÎÄ¼şÄÚ²¿±»¿´µ½
+//static è®©å‡½æ•°åªèƒ½åœ¨æºæ–‡ä»¶å†…éƒ¨è¢«çœ‹åˆ°
 {
 
 	int i = 0;
@@ -55,29 +55,29 @@ void del_contact(contact* c)
 {
 	if (c->sz == 0)
 	{
-		printf("±§Ç¸£¬Í¨Ñ¶Â¼Îª¿Õ\n");
+		printf("æŠ±æ­‰ï¼Œé€šè®¯å½•ä¸ºç©º\n");
 	}
 	else
 	{
-		//1.ÕÒµ½Ö¸¶¨µÄÁªÏµÈËµÄÎ»ÖÃ
+		//1.æ‰¾åˆ°æŒ‡å®šçš„è”ç³»äººçš„ä½ç½®
 		char name[MAX_NAME] = { 0 };
-		printf("ÇëÊäÈëÒªÉ¾³ıÈËÃû×Ö:\n");
+		printf("è¯·è¾“å…¥è¦åˆ é™¤äººåå­—:\n");
 		scanf("%s", name);
 		int pos = find_peop_by_name(c, name);
 		if (pos == -1)
 		{
-			printf("ºÜÒÅº¶£¬É¾³ıµÄÈË²»´æÔÚ\n");
+			printf("å¾ˆé—æ†¾ï¼Œåˆ é™¤çš„äººä¸å­˜åœ¨\n");
 		}
 		else
 		{
-			//2.É¾³ıÖ¸¶¨Á·Ï°ÈË;
+			//2.åˆ é™¤æŒ‡å®šç»ƒä¹ äºº;
 			int j = 0;
 			for (j = 0;j < c->sz - 1;j++)
 			{
 				c->data[j] = c->data[j + 1];
 			}
 			c->sz--;
-			printf("É¾³ı³É¹¦\n");
+			printf("åˆ é™¤æˆåŠŸ\n");
 		}
 	}
 }
@@ -85,17 +85,17 @@ void del_contact(contact* c)
 void search_contact(contact* c)
 {
 	char name[MAX_NAME] = { 0 };
-	printf("ÇëÊäÈëÒª²éÕÒÈËµÄÃû×Ö:");
+	printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾äººçš„åå­—:");
 	scanf("%s", name);
 	int ret = find_peop_by_name(c, name);
 	if (ret == -1)
 	{
-		printf("²éÎŞ´ËÈË\n");
+		printf("æŸ¥æ— æ­¤äºº\n");
 	}
 	else
 	{
 		printf("%10s %12s %10s %13s %5s %5s\n", 
-			"Ãû×Ö", "µç»°", "µØÖ·", "qq", "ÄêÁä", "ĞÔ±ğ");
+			"åå­—", "ç”µè¯", "åœ°å€", "qq", "å¹´é¾„", "æ€§åˆ«");
 			printf("%10s %12s %10s %13s %5d %5s\n",
 				c->data[ret].name, c->data[ret].tele,
 				c->data[ret].addr, c->data[ret].qq,
@@ -106,28 +106,28 @@ void search_contact(contact* c)
 void modify_contact(contact* c)
 {
 	char name[MAX_NAME] = { 0 };
-	printf("ÇëÊäÈëÒªĞŞ¸ÄÈËµÄÃû×Ö:");
+	printf("è¯·è¾“å…¥è¦ä¿®æ”¹äººçš„åå­—:");
 	scanf("%s", name);
 	int ret = find_peop_by_name(c, name);
 	if (ret == -1)
 	{
-		printf("²éÎŞ´ËÈË\n");
+		printf("æŸ¥æ— æ­¤äºº\n");
 	}
 	else
 	{
-		printf("ÇëÊäÈëĞÂµÄÃû×Ö:");
+		printf("è¯·è¾“å…¥æ–°çš„åå­—:");
 		scanf("%s", c->data[ret].name);
-		printf("ÇëÊäÈëĞÂµÄµç»°:");
+		printf("è¯·è¾“å…¥æ–°çš„ç”µè¯:");
 		scanf("%s", c->data[ret].tele);
-		printf("ÇëÊäÈëĞÂµÄµØÖ·:");
+		printf("è¯·è¾“å…¥æ–°çš„åœ°å€:");
 		scanf("%s", c->data[ret].addr);
-		printf("ÇëÊäÈëĞÂµÄqq:");
+		printf("è¯·è¾“å…¥æ–°çš„qq:");
 		scanf("%s", c->data[ret].qq);
-		printf("ÇëÊäÈëĞÂµÄĞÔ±ğ:");
+		printf("è¯·è¾“å…¥æ–°çš„æ€§åˆ«:");
 		scanf("%s", c->data[ret].sex);
-		printf("ÇëÊäÈëĞÂµÄÄêÁä:");
+		printf("è¯·è¾“å…¥æ–°çš„å¹´é¾„:");
 		scanf("%d", &(c->data[ret].age));
-		printf("ĞŞ¸Ä³É¹¦\n");
+		printf("ä¿®æ”¹æˆåŠŸ\n");
 	}
 }
 
@@ -137,7 +137,7 @@ void sort_contact(contact* c)
 	int j = 0;
 	for (i = 0;i < c->sz - 1;i++)
 	{
-		int flag = 1;//¼ÙÉèÒÑ¾­ÓĞĞò
+		int flag = 1;//å‡è®¾å·²ç»æœ‰åº
 		for (j = 0;j < c->sz - i - 1;j++)
 		{
 			if (strcmp(c->data[j].name, c->data[j + 1].name) > 0)
